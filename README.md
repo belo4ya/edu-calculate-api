@@ -5,7 +5,7 @@
 
 ## 🚀 Запуск
 
-Запустить:
+Запустить сервер:
 
 ```shell
 make run
@@ -73,38 +73,29 @@ status code: 500
 ## 📚 Структура
 
 ```text
-├── Dockerfile
-├── Makefile
-├── README.md
-├── bin
-│   └── server
 ├── cmd
 │   ├── cli
-│   │   └── main.go
+│   │   └── main.go  # точка входа для запуска приложения в режиме командной строки
 │   └── server
-│       └── main.go
-├── coverage
-│   ├── cover
-│   └── cover.html
-├── go.mod
-├── go.sum
+│       └── main.go  # точка входа для запуска приложения в режиме веб-сервиса
 ├── internal
 │   ├── config
-│   │   └── config.go
+│   │   └── config.go  # структура хранения и загрузки конфига
 │   ├── httputil
 │   │   └── httputil.go
 │   ├── logging
-│   │   └── logging.go
+│   │   └── logging.go  # конфигурация логгера
 │   ├── server
-│   │   └── http.go
+│   │   └── http.go  # конфигурация HTTP-сервера
 │   └── service
-│       ├── calculate.go
+│       ├── calculate.go  # бизнес-логика обработчика запросов
 │       ├── calculate_test.go
 │       └── service.go
 └── pkg
-    └── calc
-        ├── calc.go
-        ├── calc_test.go
-        └── errors.go
-
+│   └── calc  # модуль вычисления арифметических выражений
+│       ├── calc.go
+│       ├── calc_test.go
+│       └── errors.go
+├── Makefile  # полезные команды
+└── README.md  # вы здесь
 ```
