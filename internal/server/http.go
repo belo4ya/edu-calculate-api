@@ -13,12 +13,14 @@ import (
 	"github.com/go-chi/httplog/v2"
 )
 
+// HTTPServer represents an HTTP server with routing and configuration settings.
 type HTTPServer struct {
 	HTTP   *http.Server
 	Router *chi.Mux
 	conf   *config.Config
 }
 
+// NewHTTPServer creates a new instance of HTTPServer with the given configuration.
 func NewHTTPServer(conf *config.Config) *HTTPServer {
 	srv := &HTTPServer{conf: conf}
 	srv.Router = chi.NewRouter()
@@ -27,6 +29,7 @@ func NewHTTPServer(conf *config.Config) *HTTPServer {
 	return srv
 }
 
+// Start launches the HTTP server and waits for context cancellation to shut down.
 func (s *HTTPServer) Start(ctx context.Context) error {
 	errCh := make(chan error, 1)
 	go func() {
@@ -50,6 +53,7 @@ func (s *HTTPServer) Start(ctx context.Context) error {
 	}
 }
 
+// loggerMiddleware returns a middleware for logging HTTP requests.
 func (s *HTTPServer) loggerMiddleware() func(http.Handler) http.Handler {
 	return httplog.Handler(httplog.NewLogger("", httplog.Options{
 		LogLevel:       slog.LevelInfo,

@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// CalculateHandler processes HTTP requests for calculations and returns the result.
 func (s *Service) CalculateHandler(w http.ResponseWriter, r *http.Request) {
 	var req calculateRequest
 	defer r.Body.Close()

@@ -27,7 +27,7 @@ func (c *Config) String() string {
 	)
 }
 
-// Load configs override order: defaults -> dotenv -> env
+// Load configs override order: defaults -> dotenv -> env.
 func Load(dotenvPath string) (*Config, error) {
 	conf := Config{
 		Environment: EnvLocal,

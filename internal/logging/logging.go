@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+// Configure sets up the logging system based on the provided configuration.
 func Configure(conf *config.Config) error {
 	lvl, err := parseLevel(conf.LogLevel)
 	if err != nil {
@@ -19,6 +20,7 @@ func Configure(conf *config.Config) error {
 	return nil
 }
 
+// parseLevel converts a string representation of the logging level into slog.Level.
 func parseLevel(s string) (slog.Level, error) {
 	var lvl slog.Level
 	if err := lvl.UnmarshalText([]byte(s)); err != nil {

@@ -6,6 +6,9 @@ import (
 	"strings"
 )
 
+// Calc evaluates a mathematical expression provided as a string and returns the result.
+// It supports basic arithmetic operations: addition, subtraction, multiplication, and division.
+// The expression is expected to be in infix notation, which is converted to RPN for evaluation.
 func Calc(expression string) (float64, error) {
 	rpn := toRPN(splitExpression(expression))
 	stack := list.New()
