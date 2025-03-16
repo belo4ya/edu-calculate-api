@@ -5,7 +5,6 @@ import (
 	"calculate-api/internal/logging"
 	"calculate-api/internal/server"
 	"calculate-api/internal/service"
-	"context"
 	"fmt"
 	"log"
 	"log/slog"
@@ -20,7 +19,7 @@ func main() {
 }
 
 func run() error {
-	ctx := runy.SetupSignalHandler(context.Background())
+	ctx := runy.SetupSignalHandler()
 
 	conf, err := config.Load(".env")
 	if err != nil {
